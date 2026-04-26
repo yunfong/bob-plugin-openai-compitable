@@ -4,6 +4,8 @@ on:
   push:
     tags: [ v\d+\.\d+\.\d+ ]
 
+permissions:
+  contents: write
 
 jobs:
   release:
