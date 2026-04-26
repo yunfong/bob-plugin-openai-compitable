@@ -42,37 +42,29 @@ function generatePrompts(query) {
   if (query.detectFrom === query.detectTo) {
     return {
       systemPrompt:
-        "You are a text polishing engine. Your task is to refine and improve the given text for clarity, fluency and style, in its original language. Output only the polished text, with no explanations.",
-      userPrompt: `Polish the following text:\n\n"${query.text}"`,
+        "你是文字润色专家。改善给定文本的流畅度和表达，保持原意。只输出润色后的文本。",
+      userPrompt: `润色以下文本：\n\n"${query.text}"`,
     }
   }
 
   // Translation mode
   let systemPrompt =
-    "You are a professional multilingual translator. Translate the given text accurately and naturally, " +
-    "preserving the original meaning, tone, and style. For individual words, provide precise translations. " +
-    "For sentences, consider cultural nuances, regional differences, and historical references where applicable. " +
-    "Output only the translated text, with no explanations or additional commentary."
+    "你是专业翻译。优先准确传达原文含义（六成），同时用目标语言的地道表达（四成）。只输出译文。"
 
-  let userPrompt = `Translate the following text from ${sourceLang} to ${targetLang}:\n\n"${query.text}"`
+  let userPrompt = `将以下文本从${sourceLang}翻译为${targetLang}：\n\n"${query.text}"`
 
-  // Special handling for Chinese variants as target
   if (query.detectTo === "zh-Hant") {
-    userPrompt = `Translate the following text into Traditional Chinese (繁體中文):\n\n"${query.text}"`
+    userPrompt = `将以下文本翻译为繁體中文：\n\n"${query.text}"`
   } else if (query.detectTo === "zh-Hans") {
-    userPrompt = `Translate the following text into Simplified Chinese (简体中文):\n\n"${query.text}"`
+    userPrompt = `将以下文本翻译为简体中文：\n\n"${query.text}"`
   } else if (query.detectTo === "yue") {
-    userPrompt = `Translate the following text into Cantonese (粤语白话文):\n\n"${query.text}"`
+    userPrompt = `将以下文本翻译为粤语白话文：\n\n"${query.text}"`
   } else if (query.detectTo === "wyw") {
-    userPrompt = `Translate the following text into Classical Chinese (文言文):\n\n"${query.text}"`
+    userPrompt = `将以下文本翻译为文言文：\n\n"${query.text}"`
   }
 
-  // When translating from Classical Chinese, clarify the source
   if (query.detectFrom === "wyw") {
-    userPrompt = userPrompt.replace(
-      "Translate the following text",
-      "Translate the following Classical Chinese (文言文) text"
-    )
+    userPrompt = userPrompt.replace("将以下文本", "将以下文言文")
   }
 
   return { systemPrompt, userPrompt }
@@ -100,7 +92,7 @@ function buildRequestBody(model, query) {
         }
       : generatePrompts(query)
 
-  return {
+  const body = {
     model,
     messages: [
       {
@@ -113,6 +105,13 @@ function buildRequestBody(model, query) {
       },
     ],
   }
+
+  const temperature = parseFloat($option.temperature)
+  if (!isNaN(temperature) && temperature >= 0 && temperature <= 2) {
+    body.temperature = temperature
+  }
+
+  return body
 }
 
 /**

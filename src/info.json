@@ -37,6 +37,12 @@
       "desc": "可选项。自定义 System Prompt；必须开启明文显示才可输入中文"
     },
     {
+      "identifier": "temperature",
+      "type": "text",
+      "title": "Temperature",
+      "desc": "可选项。取值 0~2，值越小输出越稳定，值越大输出越多变。翻译建议 0.3，润色建议 0.7"
+    },
+    {
       "identifier": "customUserPrompt",
       "type": "text",
       "title": "User PPT",
