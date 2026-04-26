@@ -29,18 +29,18 @@ jobs:
           sed -i "s/$OLD_VERSION/${{ steps.get_version.outputs.version-without-v }}/" src/info.json
 
       - name: Package plugin
-        run: mkdir release && zip -j -r release/openai-translator-${{ steps.get_version.outputs.version-without-v }}.bobplugin ./src/*
+        run: mkdir release && zip -j -r release/openai-compitable-translator-${{ steps.get_version.outputs.version-without-v }}.bobplugin ./src/*
 
       - run: git checkout -- src/
 
       - name: Update appcast.json
         run: |
           python3 scripts/update_release.py ${{ steps.get_version.outputs.version-without-v }} '${{ steps.tag.outputs.message }}'
-      
+
       - name: Commit files
         run: |
-          git config --global user.name 'Bryan Lee'
-          git config --global user.email '38807139+liby@users.noreply.github.com'
+          git config --global user.name 'yunfong'
+          git config --global user.email 'yunfong@users.noreply.github.com'
           git commit -am 'chore: update appcast.json and info.json'
 
       - name: Push changes
@@ -53,8 +53,8 @@ jobs:
         with:
           release_name: ${{ steps.get_version.outputs.version }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: release/openai-translator-${{ steps.get_version.outputs.version-without-v }}.bobplugin
-          asset_name: openai-translator-${{ steps.get_version.outputs.version-without-v }}.bobplugin
+          file: release/openai-compitable-translator-${{ steps.get_version.outputs.version-without-v }}.bobplugin
+          asset_name: openai-compitable-translator-${{ steps.get_version.outputs.version-without-v }}.bobplugin
           tag: ${{ github.ref }}
           overwrite: true
           body: ${{ steps.tag.outputs.message }}

@@ -1,1 +1,3 @@
 *.bobplugin
+dist/
+.DS_Store
