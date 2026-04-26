@@ -2,6 +2,13 @@
   "identifier": "yunfong.openai-compitable.translator",
   "versions": [
     {
+      "version": "2.3.1",
+      "desc": "feat: use Chinese prompts for better EN↔ZH translation quality",
+      "sha256": "b883d959d1159bac59c43a73b714ca48398cf4f1b7dcb6133ea34a4aa0243fe6",
+      "url": "https://github.com/yunfong/bob-plugin-openai-compitable/releases/download/v2.3.1/openai-compitable-translator-2.3.1.bobplugin",
+      "minBobVersion": "0.5.0"
+    },
+    {
       "version": "0.1.0",
       "desc": "fix: add write permissions to release workflow",
       "sha256": "1bf0b136ac241063c2e94db79c45a19cbd5b62b57ca839d7a3f3361950e10ebd",

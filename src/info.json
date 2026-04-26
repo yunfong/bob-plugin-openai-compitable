@@ -1,6 +1,6 @@
 {
   "identifier": "yunfong.openai-compitable.translator",
-  "version": "0.1.0",
+  "version": "2.3.1",
   "category": "translate",
   "name": "OpenAI Compitable Translator",
   "summary": "OpenAI API compatible translator powered by LLM",
