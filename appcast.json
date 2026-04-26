@@ -1,4 +1,12 @@
 {
   "identifier": "yunfong.openai-compitable.translator",
-  "versions": []
+  "versions": [
+    {
+      "version": "0.1.0",
+      "desc": "fix: add write permissions to release workflow",
+      "sha256": "1bf0b136ac241063c2e94db79c45a19cbd5b62b57ca839d7a3f3361950e10ebd",
+      "url": "https://github.com/yunfong/bob-plugin-openai-compitable/releases/download/v0.1.0/openai-compitable-translator-0.1.0.bobplugin",
+      "minBobVersion": "0.5.0"
+    }
+  ]
 }
