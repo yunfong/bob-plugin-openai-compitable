@@ -2,6 +2,13 @@
   "identifier": "yunfong.openai-compitable.translator",
   "versions": [
     {
+      "version": "2.3.2",
+      "desc": "feat: preserve proper nouns and product names in translation",
+      "sha256": "2bdf118a072071b4de23eb13353204c865e525efca610293e18d67c3e7b91751",
+      "url": "https://github.com/yunfong/bob-plugin-openai-compitable/releases/download/v2.3.2/openai-compitable-translator-2.3.2.bobplugin",
+      "minBobVersion": "0.5.0"
+    },
+    {
       "version": "2.3.1",
       "desc": "feat: use Chinese prompts for better EN↔ZH translation quality",
       "sha256": "b883d959d1159bac59c43a73b714ca48398cf4f1b7dcb6133ea34a4aa0243fe6",
