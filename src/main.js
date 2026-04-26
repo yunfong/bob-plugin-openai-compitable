@@ -49,7 +49,7 @@ function generatePrompts(query) {
 
   // Translation mode
   let systemPrompt =
-    "你是专业翻译。优先准确传达原文含义（六成），同时用目标语言的地道表达（四成）。只输出译文。"
+    "你是专业翻译。优先准确传达原文含义（六成），同时用目标语言的地道表达（四成）。专有名词和产品名称（如 Cursor、GitHub）保留原文不译。只输出译文。"
 
   let userPrompt = `将以下文本从${sourceLang}翻译为${targetLang}：\n\n"${query.text}"`
 
